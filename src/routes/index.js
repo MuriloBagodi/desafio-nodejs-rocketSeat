@@ -6,18 +6,11 @@ const dataBase = new Database();
 
 export const routes = [
   {
-    //Rota de boas vindas
-    path: "/",
-    method: "GET",
-    handler: (req, res) => {
-      res.send("Hello Rocket Seat");
-    },
-  },
-  {
     //Rota na qual vai listar todas as tasks
-    path: "/tasks",
+    path: buildRoutesPath("/tasks"),
     method: "GET",
     handler: (req, res) => {
+      console.log("Buscando tasks")
       //Buscando todas as tasks
       const tasks = dataBase.select("tasks");
 
@@ -26,7 +19,7 @@ export const routes = [
   },
   {
     //Rota na qual vai listar todas as tasks
-    path: "/tasks",
+    path: buildRoutesPath("/tasks"),
     method: "POST",
     handler: (req, res) => {
       //Craindo tasks
