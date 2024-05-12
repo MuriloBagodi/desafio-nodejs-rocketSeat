@@ -6,7 +6,7 @@ export class Database {
   #databases = {};
 
   #persist() {
-    fs.writeFile(dataBasePath, JSON.stringify(this.#databases));
+    fs.writeFile(dataBasePath, JSON.stringify(this.#databases, null, 2));
   }
 
   constructor() {
@@ -21,7 +21,7 @@ export class Database {
 
   select(table) {
     const data = this.#databases[table] ?? [];
-    console.log(data)
+    
     return data
   }
 
@@ -35,5 +35,25 @@ export class Database {
     this.#persist()
 
     return data
+  }
+
+  delete(table, id){
+    const rowIndex = this.#databases[table].findIndex(e=> e.id === id)
+
+    if(rowIndex > -1){
+      this.#databases[table].splice(rowIndex, 1)
+      this.#persist()
+    }
+  }
+
+  update(table, id, data){
+    const rowIndex = this.#databases[table].findIndex(row => row.id === id)
+
+    if (rowIndex > -1) {
+      const row = this.#databases[table][rowIndex]
+      this.#databases[table][rowIndex] = { id, ...row, ...data }
+      this.#persist()
+    }
+
   }
 }
