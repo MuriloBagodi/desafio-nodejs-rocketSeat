@@ -15,6 +15,10 @@ Finalidade Educativa
   }
 - GET - /tasks
 - PUT - /tasks/:id
+   = Body{
+    "title": "Titulo Task wiryw",
+    "description": "Descrição task wer"
+  }
 - DELETE - /tasks/:id
 - PATCH - /tasks/:id/complete
 
