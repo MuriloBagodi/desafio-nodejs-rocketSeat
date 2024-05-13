@@ -8,5 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Murilo Salvador",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "csv": "^6.3.8",
+    "csv-parse": "^5.5.5",
+    "csv-parser": "^3.0.0",
+    "parse-csv-stream": "^2.0.2"
+  }
 }
